@@ -30,7 +30,7 @@
 
     --color-dark: #c54b69;
 
-    --border-div-size: 180px;
+    --border-div-size: 30vh;
     --border-size: 15px;
     
     --button-size: 3.5vh;
@@ -187,7 +187,7 @@
     bottom: 0;
     left: calc(var(--border-div-size) / 2);
     width: calc(100% - var(--border-div-size));
-    height: calc(var(--border-div-size) * 0.9);
+    height: 15vh;
 
     position: fixed;
 
@@ -201,7 +201,7 @@
     justify-content: space-evenly;
 
     transform: translateY(110%);
-    animation: slide-up 300s ease-in-out infinite;
+    animation: slide-up 100s ease-in-out infinite;
 }
 
 .camera-border {
@@ -211,8 +211,8 @@
     border: var(--color-quinary) var(--border-size) solid;
 
     left: calc(var(--border-div-size) / 2);
-    width: calc(100% - var(--border-div-size));
-    height: calc(100% - var(--border-div-size));
+    width: calc(100vw - var(--border-div-size));
+    height: calc((100vw - var(--border-div-size)) * 9/16);
 }
 
 .text {
@@ -332,10 +332,10 @@ p {
 }
 
 @keyframes slide-up {
-    0%, 90% {
+    0%, 80% {
         transform: translateY(110%);
     }
-    91%, 99% {
+    81%, 89% {
         transform: translateY(0%);
     }
     100% {
