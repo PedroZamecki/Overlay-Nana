@@ -11,10 +11,45 @@
     </div>
     <div class="window-border secondary">
         <div class="taskbar secondary">
+            <p class="window-name">Chat</p>
         </div>
+        <div id="Cnt"></div>
+        <script src="tmi.js"></script>
+        <script src="dec2hex.js"></script>
+        <script src="data.js"></script>
+        <script src="decompileFinal.js"></script>
+        <script>client.connect();</script>
     </div>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chatStyle.css">
 </head>
 
 </html>
+
+<style>
+    @font-face {
+        font-family: Asdonuts;
+        src: url("Asdonuts.ttf");
+    }
+
+    .window-border.secondary {
+        position: absolute;
+        top: calc(var(--border-size) * 4);
+        height: calc(100% - 90px);
+        width: calc(100% - 20px);
+        left: 10px;
+        border: var(--color-secondary) var(--border-size) solid;
+        background-color: #ffffff99;
+        box-shadow: 0 0 0 10px var(--color-dark);
+    }
+
+    .window-name {
+        width: 100%;
+        font-size: 60px;
+        text-align: center;
+        font-family: Asdonuts;
+
+        color: var(--color-quinary);
+        text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white, 1px 1px white, -1px -1px white, 1px -1px white, -1px 1px white;
+    }
+</style>

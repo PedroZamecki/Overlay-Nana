@@ -5,7 +5,7 @@
     <title>Window Overlay</title>
     <meta charset="utf-8" />
 
-    <div class="window-border ca">
+    <div class="window-border">
         <div class="taskbar">
             <p class="window-name"></p>
             <div class="actions-container">
@@ -18,5 +18,29 @@
 
     <link rel="stylesheet" href="style.css" />
 </head>
+
+<style>
+    .window-border {
+        position: absolute;
+        top: 10px;
+        height: calc(100% - 20px);
+        width: calc(100% - 20px);
+        left: 10px;
+        background-color: #ffffff99;
+        box-shadow: 0 0 0 10px var(--color-dark);
+    }
+
+    .window-name {
+        color: var(--color-quinary);
+        text-shadow: 2px 0 white,
+                    -2px 0 white,
+                    0 2px white,
+                    0 -2px white,
+                    1px 1px white,
+                    -1px -1px white,
+                    1px -1px white,
+                    -1px 1px white;
+    }
+</style>
 
 </html>

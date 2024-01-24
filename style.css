@@ -3,12 +3,6 @@
     src: url("Asdonuts.ttf");
 }
 
-* {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-}
-
 :root {
     --transparent-primary: #ffe3ffb0;
     --transparent-secondary: #fccae6b0;
@@ -34,14 +28,17 @@
     --border-size: 20px;
     --taskbar-size: 90px;
     
-    --button-size: 3.5vh;
+    --button-size: 40px;
 
     --window-name: "mude --window-name";
     --last-txt: "mude --last-txt";
-    --img: url("Background 2.png");
+    --img: url("Background.png");
 }
 
 p.last::after {
+    width: auto;
+    height: auto;
+    opacity: 1;
     content: var(--last-txt);
 }
 
@@ -117,25 +114,25 @@ p.last {
     margin-left: 2vw;
 
     color: white;
-    font-size: 5vh;
+    font-size: 60px;
     display: flex;
     flex-wrap: wrap;
 
     text-align: left;
     align-content: center;
-    text-transform: lowercase;
-    text-shadow: 2px 0 var(--color-a-quaternary), -2px 0 var(--color-a-quaternary),
-                0 2px var(--color-a-quaternary), 0 -2px var(--color-a-quaternary),
-                1px 1px var(--color-a-quaternary), -1px -1px var(--color-a-quaternary),
-                1px -1px var(--color-a-quaternary), -1px 1px var(--color-a-quaternary);
+    text-shadow: 2px 0 var(--color-quaternary), -2px 0 var(--color-quaternary),
+                0 2px var(--color-quaternary), 0 -2px var(--color-quaternary),
+                1px 1px var(--color-quaternary), -1px -1px var(--color-quaternary),
+                1px -1px var(--color-quaternary), -1px 1px var(--color-quaternary);
 }
 
 .action {
     width: var(--button-size);
     height: var(--button-size);
-    min-width: 0.5vh;
-    min-height: 0.5vh;
-    background-color: var(--color-a-quinary);
+    background-color: var(--color-quinary);
+
+    margin: 0 10px 0 10px;
+    border-radius: 100%;
 
     display: flex;
     align-items: center;
@@ -146,8 +143,7 @@ p.last {
 }
 
 .actions-container {
-    width: 10vw;
-    min-width: 15vh;
+    width: fit-content;
 
     display: flex;
     align-items: center;
@@ -158,37 +154,36 @@ p.last {
 .taskbar {
     overflow: visible;
     height: var(--taskbar-size);
+    width: 100%;
 
-    background-color: var(--color-a-primary);
+    background-color: var(--color-primary);
 
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-
-    padding-right: calc(var(--border-size) * 2);
-    transform: translate(calc(var(--border-size) * -1), calc(var(--border-size) * -1));
-
-    border-radius: var(--border-size);
 }
 
 .taskbar.secondary {
-    background-color: var(--color-a-secondary);
+    background-color: var(--color-secondary);
 }
 
 .window-border {
     width: 100%;
     height: 100%;
+    display: flex;
+    border-spacing: 0cap;
     box-sizing: border-box;
     border-radius: var(--border-size);
-    border: var(--color-a-primary) var(--border-size) solid;
+    border: var(--color-primary) var(--border-size) solid;
 }
 
 .window-border.secondary {
     position: absolute;
     top: calc(var(--border-size) * 4);
     height: calc(100% - 80px);
-    border: var(--color-a-secondary) var(--border-size) solid;
+    border: var(--color-secondary) var(--border-size) solid;
+    background-color: #ffffff99;
 }
 
 .social-img {
@@ -202,7 +197,8 @@ p.last {
     height: fit-content;
     font-size: 350%;
     font-family: Asdonuts;
-    color: var(--color-primary);
+    color: var(--color-quinary);
+    
     opacity: 1;
 }
 
@@ -232,7 +228,7 @@ p.last {
     position: fixed;
 
     box-sizing: border-box;
-    border-radius: calc(var(--border-size) * 2);
+    border-radius: 50px;
     border: var(--color-quinary) var(--border-size) solid;
 
     display: flex;
@@ -246,7 +242,7 @@ p.last {
 
 .camera-border {
     position: relative;
-    border-radius: 3vh;
+    border-radius: 50px;
     box-sizing: border-box;
     border: var(--color-quinary) var(--border-size) solid;
 
@@ -260,9 +256,13 @@ p.last {
 }
 
 p {
+    font-family: Asdonuts;
+}
+
+p.social-text,
+p.last,
+p.word {
     opacity: 0;
-    width: 100%;
-    height: 100%;
 
     font-size: 1500%;
     font-family: Asdonuts;
@@ -336,7 +336,7 @@ p {
     position: absolute;
     background-size: 200%;
     background-attachment: fixed;
-    background-image: url("Background 2.png");
+    background-image: url("Background.png");
     animation: backgroundAnimation 15s linear forwards infinite;
 }
 
@@ -347,10 +347,13 @@ p {
 .img-bg.second {
     top: 0;
     left: 0;
+    border-radius: 30px;
     filter: blur(0) invert(1);
 }
 
 .color-bg {
+    width: 100%;
+    height: 100%;
     top: 0;
     position: absolute;
     mix-blend-mode: lighten;
@@ -360,6 +363,13 @@ p {
 .color-bg.second {
     mix-blend-mode: darken;
     filter: invert(1) contrast(1.5);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
 }
 
 @keyframes rotate {
@@ -375,14 +385,11 @@ p {
 }
 
 @keyframes slide-up {
-    0%, 80% {
+    10%, 90% {
         transform: translateY(110%);
     }
-    81%, 89% {
+    0%, 9%, 91%, 100% {
         transform: translateY(0%);
-    }
-    100% {
-        transform: translateY(110%);
     }
 }
 
