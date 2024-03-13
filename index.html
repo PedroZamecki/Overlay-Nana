@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <input type="text" class="name">
+    <button>Click me</button>
+    <div class="bloco">
+    </div>
+</body>
+
+</html>
+
+<style>
+    .name {
+        width: 200px;
+        height: 30px;
+        margin: 10px;
+    }
+
+    button {
+        width: 100px;
+        height: 30px;
+        margin: 10px;
+    }
+
+    .bloco {
+        width: 100px;
+        height: 100px;
+        background-image: url(Background.png);
+    }
+</style>
+
+<script>
+    // Read the name and print in the console when the button is clicked
+    let name = document.querySelector('.name');
+    let button = document.querySelector('button');
+
+    button.addEventListener('click', function() {
+        if (name.value === '') {
+            alert('Please, fill the name');
+            return;
+        }
+        console.log(name.value);
+    });
+</script>

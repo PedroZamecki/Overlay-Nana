@@ -5,25 +5,72 @@
     <title>Camera Overlay</title>
     <meta charset="utf-8" />
 
-    <div class="camera-border"></div>
-    <div class="socials">
-        <div class="social insta">
-            <img src="instagram.svg" alt="" class="social-img">
-            <p class="social-text">@umananaai</p>
-        </div>
-        <div class="social tiktok">
-            <img src="tiktok.svg" alt="" class="social-img">
-            <p class="social-text">@umananaai</p>
-        </div>
-        <div class="social x">
-            <img src="x.svg" alt="" class="social-img">
-            <p class="social-text">@umananaai</p>
-        </div>
-        <div class="img-bg second" style="filter: invert(0);"></div>
+    <div class="camera-border">
         <div class="color-bg"></div>
+        <div class="inner-border"></div>
     </div>
 
     <link rel="stylesheet" href="style.css" />
 </head>
 
 </html>
+
+<style>
+    .camera-border {
+        left:20px;
+        top:20px;
+
+        position: relative;
+        border-radius: 80px;
+        box-sizing: border-box;
+        box-shadow: 0 0 0 20px var(--color-dark);
+        border: double 40px transparent;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+    }
+
+    .color-bg {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+        border-radius: 80px;
+        background: repeating-radial-gradient(var(--color-secondary), var(--color-dark));
+
+        background-size: 400% 400%;
+        -webkit-animation: ColorRotate 20s ease infinite;
+        -moz-animation: ColorRotate 20s ease infinite;
+        animation: ColorRotate 20s ease infinite;
+    }
+
+    .inner-border {
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        width: calc(100% - 140px);
+        height: calc(100% - 140px);
+        border-radius: 50px;
+        border: 20px solid var(--color-dark);
+        background: green;
+    }
+
+    @-webkit-keyframes ColorRotate {
+        0%,100%{background-position:top left}
+        25%{background-position:top right}
+        50%{background-position:bottom right}
+        75%{background-position:bottom left}
+    }
+    @-moz-keyframes ColorRotate {
+        0%,100%{background-position:top left}
+        25%{background-position:top right}
+        50%{background-position:bottom right}
+        75%{background-position:bottom left}
+    }
+    @keyframes ColorRotate {
+        0%,100%{background-position:top left}
+        25%{background-position:top right}
+        50%{background-position:bottom right}
+        75%{background-position:bottom left}
+    }
+</style>
