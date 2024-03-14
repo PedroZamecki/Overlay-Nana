@@ -10,9 +10,71 @@
         </div>
         <div class="last-text">
             <p class="last"></p>
-    </div>
+        </div>
+    </div>    
+
+    <link rel="stylesheet" href="style/vars.css"/>
 </head>
 
-<style></style>
-
 </html>
+
+<style>
+    :root {
+        --text-path: ignore/test.txt;
+    }
+    .border {
+        position: relative;
+        top: 0;
+        left: 0;
+        border: 0px solid black;
+        border-radius: 10px;
+        box-sizing: border-box;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        background-size: 200%;
+        background-color: var(--color-quaternary);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .last-img {
+        width: 20%;
+        height: 80vh;
+        background-size: 100%;
+        background-color: aqua;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .last-text {
+        height: 80vh;
+        font-size: 2em;
+        width: 70%;
+        color: black;
+        background-color: white;
+        text-align: center;
+        align-items: center;
+    }
+</style>
+
+<script>
+    let text_path = getComputedStyle(document.documentElement).getPropertyValue('--text-path');
+    text = document.querySelector('.last');
+
+    getText();
+    setInterval(() => getText(), 1500);
+
+    function getText() {
+        fetch(text_path)
+            .then(response => response.text())
+            .then(data => {
+                text.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>

@@ -1,39 +1,4 @@
-@font-face {
-    font-family: Asdonuts;
-    src: url("../assets/font/Asdonuts.ttf");
-}
-
-:root {
-    --transparent-primary: #ffe3ffb0;
-    --transparent-secondary: #fccae6b0;
-    --transparent-tertiary: #fab1cdb0;
-    --transparent-quaternary: #f797b4b0;
-    --transparent-quinary: #f47e9bb0;
-
-    --color-primary: #ffe3ff;
-    --color-secondary: #fccae6;
-    --color-tertiary: #fab1cd;
-    --color-quaternary: #f797b4;
-    --color-quinary: #f47e9b;
-
-    --color-a-primary: #2e97b7;
-    --color-a-secondary: #32b9be;
-    --color-a-tertiary: #5bcebf;
-    --color-a-quaternary: #a4dcb9;
-    --color-a-quinary: #fdf4b0;
-
-    --color-dark: #c54b69;
-
-    --border-div-size: 30vh;
-    --border-size: 20px;
-    --taskbar-size: 90px;
-    
-    --button-size: 40px;
-
-    --window-name: "mude --window-name";
-    --last-txt: "mude --last-txt";
-    --img: url("../assets/png/Background.png");
-}
+@import "vars.css";
 
 p.last::after {
     width: auto;
