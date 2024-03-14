@@ -1,6 +1,6 @@
 @font-face {
     font-family: Asdonuts;
-    src: url("assets/font/Asdonuts.ttf");
+    src: url("../assets/font/Asdonuts.ttf");
 }
 
 :root {
@@ -32,7 +32,7 @@
 
     --window-name: "mude --window-name";
     --last-txt: "mude --last-txt";
-    --img: url("assets/png/Background.png");
+    --img: url("../assets/png/Background.png");
 }
 
 p.last::after {
@@ -324,6 +324,9 @@ p.word {
     position: fixed;
     animation: waveAnimation 2s cubic-bezier(0.4, 0.35, 0.35, 0.4) forwards infinite;
 
+    mask:
+        radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
+        radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
     -webkit-mask:
         radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
         radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
@@ -336,7 +339,7 @@ p.word {
     position: absolute;
     background-size: 200%;
     background-attachment: fixed;
-    background-image: url("assets/png/Background.png");
+    background-image: url("../assets/png/Background.png");
     animation: backgroundAnimation 15s linear forwards infinite;
 }
 
