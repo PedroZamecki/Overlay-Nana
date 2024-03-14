@@ -4,7 +4,14 @@
 <head>
   <title>Background Overlay</title>
   <meta charset="utf-8" />
-
+  <div class="taskbar">
+    <p class="window-name"></p>
+    <div class="actions-container">
+        <div class="action close"></div>
+        <div class="action minimize"></div>
+        <div class="action maximize"></div>
+    </div>
+  </div>
   <div class="img-bg">
     <div class="circles"></div>
     <div class="wave">
@@ -13,7 +20,7 @@
     </div>
   </div>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/style.css" />
 </head>
 
 </html>
@@ -30,7 +37,7 @@
     position: absolute;
     background-size: 200%;
     background-attachment: fixed;
-    background-image: url("Background.png");
+    background-image: url("assets/png/Background.png");
     animation: backgroundAnimation 15s linear forwards infinite;
   }
 

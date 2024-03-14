@@ -1,6 +1,6 @@
 @font-face {
     font-family: Asdonuts;
-    src: url("Asdonuts.ttf");
+    src: url("assets/font/Asdonuts.ttf");
 }
 
 :root {
@@ -32,7 +32,7 @@
 
     --window-name: "mude --window-name";
     --last-txt: "mude --last-txt";
-    --img: url("Background.png");
+    --img: url("assets/png/Background.png");
 }
 
 p.last::after {
@@ -336,7 +336,7 @@ p.word {
     position: absolute;
     background-size: 200%;
     background-attachment: fixed;
-    background-image: url("Background.png");
+    background-image: url("assets/png/Background.png");
     animation: backgroundAnimation 15s linear forwards infinite;
 }
 
