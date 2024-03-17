@@ -7,6 +7,8 @@
 
     <div class="border">
         <div class="last-img">
+            <div class="image"></div>
+            <div class="color"></div>
         </div>
         <div class="last-text">
             <p class="last"></p>
@@ -23,40 +25,81 @@
         --text-path: ignore/test.txt;
     }
     .border {
-        position: relative;
         top: 0;
         left: 0;
-        border: 0px solid black;
-        border-radius: 10px;
-        box-sizing: border-box;
+        position: absolute;
+
         width: 100vw;
         height: 100vh;
-        position: absolute;
-        background-size: 200%;
+
+        border: 0px solid black;
+        box-sizing: border-box;
+        border-radius: 20px;
+
         background-color: var(--color-quaternary);
+
         display: flex;
-        flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .last-img {
-        width: 20%;
-        height: 80vh;
-        background-size: 100%;
-        background-color: aqua;
+        width: 85vh;
+        height: 85vh;
+        margin-left: 15vh;
+
+        border-radius: 100%;
+
+        background-color: white;
+    }
+
+    .color {
+        top: -100%;
+        left: 0;
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        border-radius: 20px;
+        mix-blend-mode: lighten;
+        background-color: var(--color-quaternary);
+    }
+
+    .image {
+        width: 100%;
+        height: 100%;
+
+        border-radius: 100%;
+
+        background-size: 70%;
+        background-image: url("assets/svg/heart.svg");
         background-repeat: no-repeat;
         background-position: center;
     }
 
     .last-text {
+        width: calc(100% - 130vh);
         height: 80vh;
-        font-size: 2em;
-        width: 70%;
-        color: black;
+        position: relative;
+
+        border-radius: 15px;
+        margin-right: 15vh;
+
         background-color: white;
-        text-align: center;
+
+        display: flex;
         align-items: center;
+        justify-content: center;
+    }
+
+    .last {
+        width: 95%;
+
+        font-size: 3.5em;
+        font-family: Asdonuts;
+        color: var(--color-quaternary);
     }
 </style>
 
@@ -65,7 +108,7 @@
     text = document.querySelector('.last');
 
     getText();
-    setInterval(() => getText(), 1500);
+    setInterval(() => getText(), 500);
 
     function getText() {
         fetch(text_path)
