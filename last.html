@@ -104,13 +104,13 @@
 </style>
 
 <script>
-    let text_path = getComputedStyle(document.documentElement).getPropertyValue('--text-path');
     text = document.querySelector('.last');
 
     getText();
     setInterval(() => getText(), 500);
 
     function getText() {
+        let text_path = getComputedStyle(document.documentElement).getPropertyValue('--text-path');
         fetch(text_path)
             .then(response => response.text())
             .then(data => {
