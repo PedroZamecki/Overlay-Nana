@@ -4,50 +4,97 @@
 <head>
   <meta charset="utf-8" />
 
-  <img class="cursor" src="assets/svg/cursor.svg"></img>
   <div class="text-container">
     <div class="text">
-      <p class="word">A live já vai começar
+      <p class="word">A live já vai começar </p>
+    </div>
+    <img class="cute-gif" src="/assets/gif/booty-pig.gif">
   </div>
+  <img class="cursor" src="assets/svg/cursor.svg"></img>
 
   <link rel="stylesheet" href="style/style.css"/>
   <link rel="stylesheet" href="style/vars.css"/>
 </head>
 
 <style>
+  .text-container {
+      border: 1px solid var(--color-dark);
+  }
+
   .word {
     opacity: 1;
-    font-size: 10em;
+    font-size: 9em;
     color: var(--color-quaternary);
-    text-shadow: 2px 0 black,
-                -2px 0 black,
-                0 2px black,
-                0 -2px black,
-                1px 1px black,
-                -1px -1px black,
-                1px -1px black,
-                -1px 1px black;
+    text-shadow: 5px 0 var(--color-dark),
+                -5px 0 var(--color-dark),
+                0 5px var(--color-dark),
+                0 -5px var(--color-dark),
+                5px 5px var(--color-dark),
+                -5px -5px var(--color-dark),
+                5px -5px var(--color-dark),
+                -5px 5px var(--color-dark);
+  }
+
+  .text, .cute-gif {
+    margin: 20px
+  }
+
+  .cute-gif {
+    height: 80%;
+    
+    animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) 5s infinite alternate gifAnimation;
   }
 
   .cursor {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
 
-    animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) 1s infinite alternate cursorAnimation;
+    animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) 5s infinite alternate cursorAnimation;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes gifAnimation {
+    45% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.08);
+    }
+    55% {
+      transform: scale(1);
+    }
   }
 
   @keyframes cursorAnimation {
-    0% {
-      transform: translate(0, -50%) scale(1);
+    0%, 100% {
+      transform: translate(600%, 600%) scale(1);
     }
-    100% {
-      transform: translate(120px, -500%) scale(1);
+    45% {
+      transform: translate(200%, -10%) scale(1);
+    }
+    50% {
+      transform: translate(200%, -10%) scale(1.5);
+    }
+    55% {
+      transform: translate(200%, -10%) scale(1);
     }
   }
 </style>
+
+<script>
+  let happy_gif_list = [
+    "/assets/gif/booty-pig.gif",
+    "/assets/gif/happy-pig.gif",
+    "/assets/gif/love-pig.gif",
+    "/assets/gif/nose-pig.gif",
+    ]
+
+  // Set random gif to cute-gif
+  let random_gif = happy_gif_list[Math.floor(Math.random() * happy_gif_list.length)];
+  document.querySelector('.cute-gif').src = random_gif;
+</script>
 
 </html>
