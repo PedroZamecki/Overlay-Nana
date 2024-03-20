@@ -21,7 +21,9 @@
 
     --border-div-size: 30vh;
     --border-size: 20px;
-    --taskbar-size: 90px;
+    --taskbar-size: 70px;
+
+    --shadow-size: 10px;
     
     --button-size: 40px;
 

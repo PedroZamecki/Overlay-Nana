@@ -76,7 +76,7 @@ p.last {
 
 .window-name {
     opacity: 1;
-    margin-left: 2vw;
+    margin: 0 0 0 1vw;
 
     color: white;
     font-size: 60px;
@@ -96,7 +96,6 @@ p.last {
     height: var(--button-size);
     background-color: var(--color-quinary);
 
-    margin: 0 10px 0 10px;
     border-radius: 100%;
 
     display: flex;
@@ -108,7 +107,8 @@ p.last {
 }
 
 .actions-container {
-    width: fit-content;
+    margin: 0 1vw 0 0;
+    width: 8vw;
 
     display: flex;
     align-items: center;

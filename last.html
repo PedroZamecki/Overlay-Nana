@@ -22,15 +22,18 @@
 
 <style>
     :root {
-        --text-path: ignore/test.txt;
+        --text: " .last::after";
     }
+
     .border {
-        top: 0;
-        left: 0;
+        box-shadow: 0 0 0 var(--shadow-size) var(--color-dark);
+
+        top: 10px;
+        left: 10px;
         position: absolute;
 
-        width: 100vw;
-        height: 100vh;
+        width: calc(100vw - 20px);
+        height: calc(100vh - 20px);
 
         border: 0px solid black;
         box-sizing: border-box;
@@ -45,8 +48,8 @@
     }
 
     .last-img {
-        width: 85vh;
-        height: 85vh;
+        width: calc(85vh - 20px);
+        height: calc(85vh - 20px);
         margin-left: 15vh;
 
         border-radius: 100%;
@@ -80,8 +83,8 @@
     }
 
     .last-text {
-        width: calc(100% - 130vh);
-        height: 80vh;
+        width: calc(100% - 120vh);
+        height: calc(80vh - 20px);
         position: relative;
 
         border-radius: 15px;
@@ -94,30 +97,19 @@
         justify-content: center;
     }
 
+    .last::after {
+        content: var(--text);
+    }
+
+    .last::before {
+        content: ".last::before";
+    }
+
     .last {
         width: 95%;
 
-        font-size: 3.5em;
+        font-size: 2.5em;
         font-family: Asdonuts;
         color: var(--color-quaternary);
     }
 </style>
-
-<script>
-    text = document.querySelector('.last');
-
-    getText();
-    setInterval(() => getText(), 500);
-
-    function getText() {
-        let text_path = getComputedStyle(document.documentElement).getPropertyValue('--text-path');
-        fetch(text_path)
-            .then(response => response.text())
-            .then(data => {
-                text.innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
-</script>
