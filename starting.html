@@ -2,18 +2,52 @@
 <html>
 
 <head>
-  <title>Starting Text Overlay</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <img class="cursor" src="assets/svg/cursor.svg"></img>
   <div class="text-container">
     <div class="text">
       <p class="word">A live já vai começar
   </div>
 
   <link rel="stylesheet" href="style/style.css"/>
-<link rel="stylesheet" href="style/vars.css"/>
-  <script src="script.js"></script>
+  <link rel="stylesheet" href="style/vars.css"/>
 </head>
+
+<style>
+  .word {
+    opacity: 1;
+    font-size: 10em;
+    color: var(--color-quaternary);
+    text-shadow: 2px 0 black,
+                -2px 0 black,
+                0 2px black,
+                0 -2px black,
+                1px 1px black,
+                -1px -1px black,
+                1px -1px black,
+                -1px 1px black;
+  }
+
+  .cursor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+
+    animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) 1s infinite alternate cursorAnimation;
+  }
+
+  @keyframes cursorAnimation {
+    0% {
+      transform: translate(0, -50%) scale(1);
+    }
+    100% {
+      transform: translate(120px, -500%) scale(1);
+    }
+  }
+</style>
 
 </html>

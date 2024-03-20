@@ -225,8 +225,7 @@ p {
 }
 
 p.social-text,
-p.last,
-p.word {
+p.last {
     opacity: 0;
 
     font-size: 1500%;
