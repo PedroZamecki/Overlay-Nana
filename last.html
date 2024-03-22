@@ -20,8 +20,19 @@
 
 </html>
 
+<script>
+    // Get the url params
+    const urlParams = new URLSearchParams(window.location.search);
+    // search for the param 'last'
+    const last = urlParams.get('last');
+    // modify the --text variable to the value of the param 'last'
+    document.documentElement.style.setProperty('--text', `"${last}"`);
+
+</script>
+
 <style>
     :root {
+        --value: "mude --value ";
         --text: " .last::after";
     }
 
@@ -102,7 +113,7 @@
     }
 
     .last::before {
-        content: ".last::before";
+        content: var(--value);
     }
 
     .last {
