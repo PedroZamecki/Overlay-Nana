@@ -96,6 +96,8 @@ p.last {
     height: var(--button-size);
     background-color: var(--color-quinary);
 
+    border-radius: 100%;
+
     display: flex;
     align-items: center;
     flex-direction: column;
