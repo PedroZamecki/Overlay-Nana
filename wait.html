@@ -8,7 +8,7 @@
         <div class="text">
             <p class="word">Um segundo, já voltamos!</p>
         </div>
-        <img class="cute-gif" src="assets/gif/hang-in-there.gif">
+        <img class="cute-gif" onerror="this.src='assets/gif/hang-in-there.gif'">
     </div>
     <img class="cursor" src="assets/svg/cursor.svg"></img>
 
@@ -17,6 +17,10 @@
 </head>
 
 <style>
+    html {
+        overflow: hidden;
+    }
+
     .word {
         opacity: 1;
         font-size: 9em;
@@ -54,16 +58,12 @@
     }
 
     @keyframes gifAnimation {
-        45% {
+        45%, 55% {
             transform: scale(1);
         }
 
         50% {
-            transform: scale(1.08);
-        }
-
-        55% {
-            transform: scale(1);
+            transform: scale(1.03);
         }
     }
 
@@ -89,16 +89,17 @@
 </style>
 
 <script>
-    // let sad_gif_list = [
-    //     "/assets/gif/cry-pig.gif",
-    //     "/assets/gif/cry-pig2.gif",
-    //     "/assets/gif/eat-pig.gif",
-    //     "/assets/gif/hang-in-there.gif",
-    // ]
+    let wait_gif_list = [
+        "/assets/gif/eat-pig.gif",
+        "/assets/gif/hang-in-there.gif",
+        "/assets/gif/wait-pig.gif",
+        "/assets/gif/wait-pig2.gif",
+        "/assets/gif/fart-pig.gif",
+    ]
 
-    // // Set random gif to cute-gif
-    // let random_gif = sad_gif_list[Math.floor(Math.random() * sad_gif_list.length)];
-    // document.querySelector('.cute-gif').src = random_gif;
+    // Set random gif to cute-gif
+    let random_gif = wait_gif_list[Math.floor(Math.random() * wait_gif_list.length)];
+    document.querySelector('.cute-gif').src = random_gif;
 </script>
 
 </html>

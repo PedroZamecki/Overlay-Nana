@@ -36,12 +36,15 @@
   }
 
   .cute-gif {
+    z-index: 1;
     height: 80%;
+    width: min-content;
     
     animation: cubic-bezier(0.6, -0.28, 0.735, 0.045) 5s infinite alternate gifAnimation;
   }
 
   .cursor {
+    z-index: 1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,7 +75,7 @@
       transform: translate(200%, -10%) scale(1);
     }
     50% {
-      transform: translate(200%, -10%) scale(1.5);
+      transform: translate(200%, -10%) scale(0.92);
     }
     55% {
       transform: translate(200%, -10%) scale(1);
@@ -86,6 +89,9 @@
     "assets/gif/happy-pig.gif",
     "assets/gif/love-pig.gif",
     "assets/gif/nose-pig.gif",
+    "assets/gif/dance-pig.gif",
+    "assets/gif/dance-pig2.gif",
+    "assets/gif/exercise-pig.gif"
     ]
 
   // Set random gif to cute-gif
