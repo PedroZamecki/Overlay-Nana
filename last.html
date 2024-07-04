@@ -24,15 +24,22 @@
     // Get the url params
     const urlParams = new URLSearchParams(window.location.search);
     // search for the param 'last'
-    const last = urlParams.get('last');
-    // modify the --text variable to the value of the param 'last'
-    document.documentElement.style.setProperty('--text', `"${last}"`);
+    let last = urlParams.get('last');
+    let value = urlParams.get('value');
 
+    // Crop the text to 20 characters
+    if (last.length > 20) {
+        last = last.substring(0, 20) + "...";
+    }
+
+    // modify the --text variable to the value of the param 'last'
+    document.documentElement.style.setProperty('--text', `"${last} ${value}"`);
+    console.log(last);
 </script>
 
 <style>
     :root {
-        --value: "mude --value ";
+        --value: "mude --value";
         --text: " .last::after";
     }
 
@@ -94,7 +101,7 @@
     }
 
     .last-text {
-        width: calc(100% - 120vh);
+        width: calc(100% - 130px);
         height: calc(80vh - 20px);
         position: relative;
 
@@ -103,9 +110,11 @@
 
         background-color: white;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: inline-block;
+
+        overflow: hidden;
+        text-overflow: clip;
+        white-space: nowrap;
     }
 
     .last::after {
@@ -114,10 +123,13 @@
 
     .last::before {
         content: var(--value);
+        color: var(--color-quinary);
+        text-shadow: 1px 1px 1px var(--color-dark);
     }
 
     .last {
-        width: 95%;
+        margin: 0;
+        line-height: 150%;
 
         font-size: 2.5em;
         font-family: Asdonuts;

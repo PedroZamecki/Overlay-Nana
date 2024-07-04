@@ -80,6 +80,7 @@
   }
 
   .circle {
+    display: none;
     overflow: hidden;
     position: absolute;
 
@@ -133,6 +134,7 @@
 
     circle.style.width = size + "px";
     circle.style.height = size + "px";
+    circle.style.display = "unset";
 
     time = Math.random()*5 + 20;
     circle.style.animationDuration = time + "s";
