@@ -28,12 +28,12 @@
     let value = urlParams.get('value');
 
     // Crop the text to 20 characters
-    if (last.length > 20) {
-        last = last.substring(0, 20) + "...";
+    if (last.length > 27) {
+        last = last.substring(0, 27) + "...";
     }
 
     // modify the --text variable to the value of the param 'last'
-    document.documentElement.style.setProperty('--text', `"${last} - ${value}"`);
+    document.documentElement.style.setProperty('--text', `" ${last} - ${value}"`);
     console.log(last);
 </script>
 
@@ -68,6 +68,7 @@
     .last-img {
         width: calc(85vh - 20px);
         height: calc(85vh - 20px);
+        aspect-ratio: 1/1;
         margin-left: 15vh;
 
         border-radius: 100%;
@@ -101,8 +102,7 @@
     }
 
     .last-text {
-        width: calc(100% - 130px);
-        height: calc(80vh - 20px);
+        width: 88%; 
         position: relative;
 
         border-radius: 15px;
@@ -122,6 +122,7 @@
     }
 
     .last::before {
+        margin-left: 1vw;
         content: var(--value);
         color: var(--color-quinary);
         text-shadow: 1px 1px 1px var(--color-dark);
