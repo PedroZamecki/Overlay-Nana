@@ -33,7 +33,11 @@
     }
 
     // modify the --text variable to the value of the param 'last'
-    document.documentElement.style.setProperty('--text', `" ${last} - ${value}"`);
+    if (value) {
+        document.documentElement.style.setProperty('--text', `" ${last} - ${value}"`);
+    } else {
+        document.documentElement.style.setProperty('--text', `" ${last}"`);
+    }
     console.log(last);
 </script>
 
