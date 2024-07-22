@@ -80,6 +80,8 @@
   }
 
   .circle {
+    width: 0;
+    height: 0;
     display: none;
     overflow: hidden;
     position: absolute;
@@ -108,9 +110,11 @@
 
   @keyframes circleAnimation {
     0% {
+      display: unset !important;
       top: -200px;
     }
     100% {
+      display: unset !important;
       top: 2220px;
     }
   }
@@ -134,10 +138,10 @@
 
     circle.style.width = size + "px";
     circle.style.height = size + "px";
-    circle.style.display = "unset";
 
     time = Math.random()*5 + 20;
     circle.style.animationDuration = time + "s";
+    circle.style.display = "unset";
     background.prepend(circle);
 
     setTimeout(function() {
