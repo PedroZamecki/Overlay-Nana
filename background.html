@@ -82,7 +82,7 @@
   .circle {
     width: 0;
     height: 0;
-    display: none;
+    filter: opacity(0);
     overflow: hidden;
     position: absolute;
 
@@ -95,7 +95,10 @@
     border-radius: 50%;
     -moz-border-radius:50%;
     -webkit-border-radius: 50%;
+  }
 
+  .animation {
+    filter : opacity(1) !important;
     animation: circleAnimation;
   }
 
@@ -112,10 +115,12 @@
     0% {
       display: unset !important;
       top: -200px;
+      transform: translate(-10%, 0);
     }
     100% {
       display: unset !important;
-      top: 2220px;
+      top: calc(100vh + 220px);
+      transform: translate(100%, 0);
     }
   }
 
@@ -129,25 +134,47 @@
   // Create random circles on the background
   var background = document.querySelector(".circles");
 
+  function updateAnimation(circle, time) {
+    setTimeout(function() {
+      circle.classList.remove("animation");
+      setTimeout(function() {
+        var size = Math.random() * 150 + 50;
+        circle.style.left = (Math.random() * 1920) * 0.6 - (size / 2) + "px";
+
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+        var newTime = Math.random() * 5000 + 7500;
+        circle.style.animationDuration = newTime + "ms";
+
+        // Adicionar a classe "animation" corretamente
+        setTimeout(function() {
+          circle.classList.add("animation");
+        }, 100);
+
+        updateAnimation(circle, newTime);
+      }, 100);
+    }, time*.90);
+  }
+
   function createCircle() {
     var circle = document.createElement("div");
     var size = Math.random() * 150 + 50;
     circle.classList.add("circle");
 
-    circle.style.left = (Math.random() * 1920)*.6 - (size/2) + "px";
+    circle.style.left = (Math.random() * 1920) * 0.6 - (size / 2) + "px";
 
     circle.style.width = size + "px";
     circle.style.height = size + "px";
 
-    time = Math.random()*5 + 20;
-    circle.style.animationDuration = time + "s";
-    circle.style.display = "unset";
+    var time = Math.random() * 5000 + 7500;
+    circle.style.animationDuration = time + "ms";
+    circle.classList.add("animation");
     background.prepend(circle);
 
-    setTimeout(function() {
-      circle.remove();
-    }, time * 1000);
+    updateAnimation(circle, time);
   }
 
-  setInterval(createCircle, 500);
+  for (var i = 0; i < 15; i++) {
+    setTimeout(createCircle, (Math.random() * 100) + 1000*i);
+  }
 </script>
