@@ -13,12 +13,18 @@
         <div class="taskbar secondary">
             <p class="window-name">Chat</p>
         </div>
-        <div id="Cnt"></div>
-        <script src="script/tmi.js"></script>
-        <script src="script/dec2hex.js"></script>
-        <script src="script/data.js"></script>
-        <script src="script/decompileFinal.js"></script>
-        <script>client.connect();</script>
+        <div id="Cnt">
+            <iframe id="chat-box"
+            referrerpolicy="same-origin"
+            loading="lazy"
+            border: 0
+            width="100%"
+            height="100%"
+            allowfullscreen="true"
+            style="border: 0; width: 100%; height: 100%;"
+            >
+            </iframe>
+        </div>
     </div>
 
     <link rel="stylesheet" href="style/chatStyle.css">
@@ -26,6 +32,18 @@
 </head>
 
 </html>
+
+<script>
+    // get the url params
+    const urlParams = new URLSearchParams(window.location.search);
+    // search for the param 'src'
+    let src = urlParams.get('src');
+    
+    // modify the src of the iframe to the value of the param 'src'
+    if (src) {
+        document.getElementById('chat-box').src = src;
+    }
+</script>
 
 <style>
     @font-face {
@@ -52,5 +70,11 @@
 
         color: var(--color-quinary);
         text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white, 1px 1px white, -1px -1px white, 1px -1px white, -1px 1px white;
+    }
+
+    #Cnt {
+        height: calc(100% - 70px);
+        width: 100%;
+        background: linear-gradient(0deg, #FFFFFFF0, #FFFFFF0F, #FFFFFFF0);
     }
 </style>
