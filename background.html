@@ -7,21 +7,37 @@
   <div class="taskbar">
     <p class="window-name"></p>
     <div class="actions-container">
-        <div class="action close"></div>
-        <div class="action minimize"></div>
-        <div class="action maximize"></div>
+      <div class="action close"></div>
+      <div class="action minimize"></div>
+      <div class="action maximize"></div>
     </div>
   </div>
   <div class="img-bg">
-    <div class="circles"></div>
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
     <div class="wave">
     </div>
     <div class="color-bg">
     </div>
   </div>
 
-  <link rel="stylesheet" href="style/style.css"/>
-  <link rel="stylesheet" href="style/vars.css"/>
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/vars.css" />
 </head>
 
 </html>
@@ -30,7 +46,7 @@
   html {
     overflow: hidden;
   }
-  
+
   .taskbar {
     box-shadow: 0 0 0 var(--shadow-size) var(--color-quaternary);
   }
@@ -62,11 +78,11 @@
     animation: waveAnimation 2s cubic-bezier(0.4, 0.35, 0.35, 0.4) forwards infinite;
 
     mask:
-        radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
-        radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
+      radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
+      radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
     -webkit-mask:
-        radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
-        radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
+      radial-gradient(var(--R) at calc(1.8*var(--size)) 50%, #000 99%, #0000 101%) 0 calc(50% - 2*var(--size))/100% calc(4*var(--size)),
+      radial-gradient(var(--R) at calc(-.8*var(--size)) 50%, #0000 99%, #000 101%) var(--size) 50%/100% calc(4*var(--size)) repeat-y;
   }
 
   .circles {
@@ -80,9 +96,13 @@
   }
 
   .circle {
-    width: 0;
-    height: 0;
-    filter: opacity(0);
+    --size: 200px;
+    --animation-duration: 1000ms;
+    --animation-delay: 0s;
+    --left: 0;
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
     overflow: hidden;
     position: absolute;
 
@@ -93,13 +113,10 @@
 
     border: 5px solid black;
     border-radius: 50%;
-    -moz-border-radius:50%;
+    -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-  }
-
-  .animation {
-    filter : opacity(1) !important;
-    animation: circleAnimation;
+    animation: circleAnimation var(--animation-duration) linear forwards infinite;
+    animation-delay: var(--animation-delay);
   }
 
   .color-bg {
@@ -113,68 +130,37 @@
 
   @keyframes circleAnimation {
     0% {
-      display: unset !important;
-      top: -200px;
-      transform: translate(-10%, 0);
+      transform: translate(-20%, -200px);
     }
+
     100% {
-      display: unset !important;
-      top: calc(100vh + 220px);
-      transform: translate(100%, 0);
+      transform: translate(20%, 100vh);
     }
   }
 
   @keyframes backgroundAnimation {
-      from { background-position: 0 100%; }
-      to { background-position: 100% 0%; }
-}
+    from {
+      background-position: 0 100%;
+    }
+
+    to {
+      background-position: 100% 0%;
+    }
+  }
 </style>
 
 <script>
-  // Create random circles on the background
-  var background = document.querySelector(".circles");
+  // Give random values to the circles
+  const circles = document.querySelectorAll('.circle');
+  circles.forEach(circle => {
+    const size = Math.random() * 100 + 50;
+    const left = Math.random() * 55;
+    const animationDuration = Math.random() * 10000 + 5000;
+    const animationDelay = Math.random() * -50000;
 
-  function updateAnimation(circle, time) {
-    setTimeout(function() {
-      circle.classList.remove("animation");
-      setTimeout(function() {
-        var size = Math.random() * 150 + 50;
-        circle.style.left = (Math.random() * 1920) * 0.6 - (size / 2) + "px";
-
-        circle.style.width = size + "px";
-        circle.style.height = size + "px";
-        var newTime = 5000 * (1-(size / 200)) + 8000;
-        circle.style.animationDuration = newTime + "ms";
-
-        // Adicionar a classe "animation" corretamente
-        setTimeout(function() {
-          circle.classList.add("animation");
-        }, 100);
-
-        updateAnimation(circle, newTime);
-      }, 100);
-    }, time);
-  }
-
-  function createCircle() {
-    var circle = document.createElement("div");
-    var size = Math.random() * 150 + 50;
-    circle.classList.add("circle");
-
-    circle.style.left = (Math.random() * 1920) * 0.6 - (size / 2) + "px";
-
-    circle.style.width = size + "px";
-    circle.style.height = size + "px";
-
-    var time = 5000 * (1-(size / 200)) + 8000;
-    circle.style.animationDuration = time + "ms";
-    circle.classList.add("animation");
-    background.prepend(circle);
-
-    updateAnimation(circle, time);
-  }
-
-  for (var i = 0; i < 20; i++) {
-    setTimeout(createCircle, (Math.random() * 100) + 500*i);
-  }
+    circle.style.setProperty('--size', `${size}px`);
+    circle.style.setProperty('--left', `${left}%`);
+    circle.style.setProperty('--animation-duration', `${animationDuration}ms`);
+    circle.style.setProperty('--animation-delay', `${animationDelay}ms`);
+  });
 </script>
